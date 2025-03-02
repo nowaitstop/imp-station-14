@@ -64,7 +64,8 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [ValidatePrototypeId<ReagentPrototype>]
     private const string CopperBlood = "CopperBlood";
 
-    private static string[] _standoutReagents = [Blood, Slime, CopperBlood];
+    // imp reagent transparency
+    // private static string[] _standoutReagents = [Blood, Slime, CopperBlood];
 
     public static readonly float PuddleVolume = 1000;
 
@@ -361,23 +362,22 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         {
             volume = solution.Volume / puddleComponent.OverflowVolume;
 
-            // Make blood stand out more
-            // Kinda EH
-            // Could potentially do alpha per-solution but future problem.
+            // imp reagent transparency
 
-            color = solution.GetColorWithout(_prototypeManager, _standoutReagents);
-            color = color.WithAlpha(0.7f);
+            color = solution.GetColor(_prototypeManager);
+            // color = solution.GetColorWithout(_prototypeManager, _standoutReagents);
+            // color = color.WithAlpha(0.7f);
 
-            foreach (var standout in _standoutReagents)
-            {
-                var quantity = solution.GetTotalPrototypeQuantity(standout);
-                if (quantity <= FixedPoint2.Zero)
-                    continue;
+            // foreach (var standout in _standoutReagents)
+            // {
+            //     var quantity = solution.GetTotalPrototypeQuantity(standout);
+            //     if (quantity <= FixedPoint2.Zero)
+            //         continue;
 
-                var interpolateValue = quantity.Float() / solution.Volume.Float();
-                color = Color.InterpolateBetween(color,
-                    _prototypeManager.Index<ReagentPrototype>(standout).SubstanceColor, interpolateValue);
-            }
+            //     var interpolateValue = quantity.Float() / solution.Volume.Float();
+            //     color = Color.InterpolateBetween(color,
+            //         _prototypeManager.Index<ReagentPrototype>(standout).SubstanceColor, interpolateValue);
+            // }
         }
 
         _appearance.SetData(uid, PuddleVisuals.CurrentVolume, volume.Float(), appearance);

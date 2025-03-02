@@ -75,6 +75,9 @@ namespace Content.Shared.Chemistry.Reagent
         [DataField("color")]
         public Color SubstanceColor { get; private set; } = Color.White;
 
+        [DataField("alpha")]
+        public float SubstanceAlpha { get; private set; } = 0.7f;
+
         /// <summary>
         ///     The specific heat of the reagent.
         ///     How much energy it takes to heat one unit of this reagent by one Kelvin.

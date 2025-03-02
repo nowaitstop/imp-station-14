@@ -836,11 +836,13 @@ namespace Content.Shared.Chemistry.Components
                 {
                     first = false;
                     mixColor = proto.SubstanceColor;
+                    // imp reagent transparency
+                    mixColor = mixColor.WithAlpha(proto.SubstanceAlpha);
                     continue;
                 }
 
                 var interpolateValue = quantity.Float() / runningTotalQuantity.Float();
-                mixColor = Color.InterpolateBetween(mixColor, proto.SubstanceColor, interpolateValue);
+                mixColor = Color.InterpolateBetween(mixColor, proto.SubstanceColor.WithAlpha(proto.SubstanceAlpha), interpolateValue);
             }
             return mixColor;
         }

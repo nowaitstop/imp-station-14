@@ -5,6 +5,7 @@
   desc: reagent-desc-blood
   flavor: metallic
   color: "#800000"
+  alpha: 1.0  # imp
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/bloodglass.rsi
     state: icon_empty
@@ -65,6 +66,7 @@
   desc: reagent-desc-slime
   flavor: slimy
   color: "#2cf274"
+  alpha: 1.0  # imp
   recognizable: true
   physicalDesc: reagent-physical-desc-viscous
   slippery: false
@@ -116,6 +118,7 @@
   desc: reagent-desc-hemocyanin-blood
   flavor: metallic
   color: "#162581"
+  alpha: 1.0  # imp
   recognizable: true
   physicalDesc: reagent-physical-desc-metallic
   slippery: false
